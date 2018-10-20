@@ -1,12 +1,11 @@
 import { applyMiddleware, combineReducers, compose, createStore } from "redux";
 import ReduxThunk from 'redux-thunk';
 import { BUILD } from "../config/app-config";
-
-const test = () => ({ test: [] })
+import partiesList from './reducers/search-parties-reducer';
 
 export default function createReduxStore() {
     let reduxState = combineReducers({
-        test
+        partiesList
     }),
         middleWare = applyMiddleware(ReduxThunk);
     return createStore(reduxState, BUILD === "dev" && window.devToolsExtension ?

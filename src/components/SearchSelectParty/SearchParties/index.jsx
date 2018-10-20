@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { getPartiesList } from '../../../redux/actions/search-parties-action';
 import DEFAULT_AVATAR from '../../assets/images/default_avatar.svg';
 
 class SearchParties extends Component {
@@ -10,6 +12,11 @@ class SearchParties extends Component {
         }
     }
 
+    onInputSearch = (e) => {
+        this.props.getPartiesList();
+        this.setState({ partyName: e.target.value })
+    }
+
     render() {
         const {
             partyName
@@ -18,14 +25,14 @@ class SearchParties extends Component {
             <div className="seach-parties-wrapper">
                 <img src={DEFAULT_AVATAR} className="avatar-image" alt="default avatar" />
                 <div className="input-wrapper">
-                    <label for="praty-name" className={`${partyName ? 'party-name-label' : 'party-name-label-default'}`}>
+                    <label htmlFor="praty-name" className={`${partyName ? 'party-name-label' : 'party-name-label-default'}`}>
                         Enter Party Name
                     </label>
                     <input
                         id="praty-name"
                         className="party-name-input"
                         name="party-name"
-                        onChange={e => this.setState({ partyName: e.target.value })}
+                        onChange={this.onInputSearch}
                         value={partyName}
                     />
                 </div>
@@ -34,4 +41,4 @@ class SearchParties extends Component {
     }
 }
 
-export default SearchParties;
+export default connect(null, { getPartiesList })(SearchParties);
