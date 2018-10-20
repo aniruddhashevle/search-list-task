@@ -17,20 +17,18 @@ class SearchParties extends Component {
         return (
             <div className="seach-parties-wrapper">
                 <img src={DEFAULT_AVATAR} className="avatar-image" alt="default avatar" />
-                {
-                    partyName &&
-                    <label for="praty-name" className="party-name-label">
+                <div className="input-wrapper">
+                    <label for="praty-name" className={`${partyName ? 'party-name-label' : 'party-name-label-default'}`}>
                         Enter Party Name
                     </label>
-                }
-                <input
-                    id="praty-name"
-                    className="party-name-input"
-                    name="party-name"
-                    onChange={e => this.setState({ partyName: e.target.value })}
-                    value={partyName}
-                    placeholder="Enter Party Name"
-                />
+                    <input
+                        id="praty-name"
+                        className="party-name-input"
+                        name="party-name"
+                        onChange={e => this.setState({ partyName: e.target.value })}
+                        value={partyName}
+                    />
+                </div>
             </div>
         )
     }
