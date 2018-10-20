@@ -1,0 +1,42 @@
+@import '../assets/styles/mixins.scss';
+@import '../assets/styles/variables.scss';
+
+.search-select-wrapper {
+    max-width: 1300px;
+    width: 96%;
+    margin: 0 auto;
+    padding: 30px 0;
+
+    .add-party-text,
+    .party-name-label {
+        display: inline-block;
+    }
+    
+    .avatar-image {
+        width: 24px;
+        height: 24px;
+        margin-right: 20px;
+        vertical-align: middle;
+    }
+
+    .add-party-wrapper {
+        .add-party-text {
+            cursor: pointer;
+            @include font-properties($color: #4964DA);
+        }
+    }
+
+    .seach-parties-wrapper {
+        width: 500px;
+        .party-name-input {
+            width: 80%;
+            border: none;
+            border-bottom: 1px solid;
+            outline: none;
+            @include font-properties($color: $defaultText);
+        }
+    }
+    
+
+}
+
