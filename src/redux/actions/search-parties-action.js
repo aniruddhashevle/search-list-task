@@ -13,6 +13,8 @@ export function getPartiesList(searchValue) {
     return dispatch => {
         //mock data is set
         let data = [];
+
+        //below is the dafined data and searched data, which woould be exoected from the backend as a search result
         if (searchValue.length > 0) {
             data = [
                 {
