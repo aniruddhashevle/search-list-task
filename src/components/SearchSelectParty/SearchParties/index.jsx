@@ -47,17 +47,6 @@ class SearchParties extends Component {
     }
 }
 
-function mapStateToProps(reduxState) {
-    const {
-        partiesList: {
-            searchedPartiesList,
-            // currentBalance
-        }
-    } = reduxState;
-
-    return { searchedPartiesList };
-}
-
-export default connect(mapStateToProps, {
+export default connect(null, {
     getPartiesList,
 })(SearchParties);

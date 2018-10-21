@@ -27,7 +27,6 @@ class SearchSelectParty extends Component {
         });
     }
 
-
     onSelectingResult = (id) => {
         this.props.getCurrentBalance(id);
         this.setState({
@@ -52,10 +51,10 @@ class SearchSelectParty extends Component {
                         !shouldShowParty && <AddParty onClickAddParty={this.onClickAddParty} />
                         :
                         !shouldShowParty &&
-                        <SearchParties onSelectingResult={this.onSelectingResult} />
+                        <SearchParties searchedPartiesList={searchedPartiesList} onSelectingResult={this.onSelectingResult} />
                 }
                 {
-                    currentBalance && searchedPartiesList.length > 0 && shouldShowParty &&
+                    currentBalance && shouldShowParty &&
                     <ShowParty
                         currentBalance={currentBalance}
                         searchedPartiesList={searchedPartiesList}

@@ -143,9 +143,7 @@ export function getCurrentBalance(id) {
             }
         ];
 
-        if (id) {
-            data = data.find(x => x.id === id);
-        }
+        if (id) data = data.find(x => x.id === id);
 
         dispatch(setCurrentBalance(data));
     }
