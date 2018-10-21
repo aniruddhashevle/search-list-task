@@ -19,10 +19,6 @@ class SearchParties extends Component {
         this.setState({ partyName: value })
     }
 
-    onSelectingResult = () => {
-        console.log('s');
-    }
-
     render() {
         const {
             partyName
@@ -44,7 +40,7 @@ class SearchParties extends Component {
                         onChange={this.onInputSearch}
                         value={partyName}
                     />
-                    <SearchedList partiesList={searchedPartiesList} onSelectingResult={this.onSelectingResult} />
+                    <SearchedList partiesList={searchedPartiesList} onSelectingResult={this.props.onSelectingResult} />
                 </div>
             </div>
         )
@@ -54,11 +50,14 @@ class SearchParties extends Component {
 function mapStateToProps(reduxState) {
     const {
         partiesList: {
-            searchedPartiesList
+            searchedPartiesList,
+            // currentBalance
         }
     } = reduxState;
 
     return { searchedPartiesList };
 }
 
-export default connect(mapStateToProps, { getPartiesList })(SearchParties);
+export default connect(mapStateToProps, {
+    getPartiesList,
+})(SearchParties);

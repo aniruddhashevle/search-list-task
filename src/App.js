@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import SearchSelectParty from './components/SearchSelectParty';
+import './components/assets/styles/main.scss';
 import './App.scss';
 
 class App extends Component {

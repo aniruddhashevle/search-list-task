@@ -1,11 +1,27 @@
 import {
-    GET_PARTIES_LIST
+    GET_PARTIES_LIST,
+    GET_CURRENT_BALANACE,
+    CLEAR_CURRENT_BALANACE
 } from '../action-constants';
 
 function setPartiesList(data) {
     return {
         type: GET_PARTIES_LIST,
         data
+    }
+}
+
+function setCurrentBalance(data) {
+    return {
+        type: GET_CURRENT_BALANACE,
+        data
+    }
+}
+
+function clearCurrentBalance() {
+    return {
+        type: CLEAR_CURRENT_BALANACE,
+        data: null
     }
 }
 
@@ -83,11 +99,61 @@ export function getPartiesList(searchValue) {
             ];
             data = data.filter(x => {
                 return (
-                    x.name.toLocaleLowerCase().search(searchValue.toLocaleLowerCase()) !== -1 ||
-                    x.address.toLocaleLowerCase().search(searchValue.toLocaleLowerCase()) !== -1
+                    x.name.toLocaleLowerCase().indexOf(searchValue.toLocaleLowerCase()) !== -1 ||
+                    x.address.toLocaleLowerCase().indexOf(searchValue.toLocaleLowerCase()) !== -1
                 )
             })
         }
         dispatch(setPartiesList(data));
+    }
+}
+
+export function getCurrentBalance(id) {
+    return dispatch => {
+        //mock data is set
+        let data = [
+            {
+                balance: 11000.50,
+                isDebit: true,
+                name: 'Alpha Business Test 1533217732',
+                id: '5b630bc5b4dbfe0014f68ab9'
+            },
+            {
+                balance: 15000,
+                isDebit: true,
+                name: 'Jewel',
+                id: '5b654cdf881c1d0014f4f31e'
+            },
+            {
+                balance: 20000,
+                isDebit: false,
+                name: 'Aakash Ganga Cosmetics',
+                id: '5b879d09d1f79c0014a7276a'
+            },
+            {
+                balance: 40000.00,
+                isDebit: true,
+                name: 'AGRA-A TO Z IMMITATION JEWELLERS',
+                id: '5b879d09d1f79c0014a7276b'
+            },
+            {
+                balance: 10000.50,
+                isDebit: false,
+                name: 'AGRA KUMAR & BROS',
+                id: '5b879d09d1f79c0014a7276c'
+            }
+        ];
+
+        if (id) {
+            data = data.find(x => x.id === id);
+        }
+
+        dispatch(setCurrentBalance(data));
+    }
+}
+
+export function clearAddedParty() {
+    return dispatch => {
+        dispatch(clearCurrentBalance());
     }
 }

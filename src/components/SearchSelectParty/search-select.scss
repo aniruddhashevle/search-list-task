@@ -20,9 +20,22 @@
     }
 
     .add-party-wrapper {
+        display: inline-grid;
+        grid-template-columns: 1fr 6fr 1fr;
+        align-items: flex-start;
         .add-party-text {
             cursor: pointer;
             @include font-properties($color: #4964DA);
+        }
+        .add-party-avatar { align-self: center; }
+        .party-title {
+            @include font-properties($color: $black);
+        }
+        .party-data {
+            @include font-properties($font-size: 12px, $color: $defaultText);
+        }
+        .current-balance {
+            @include font-properties($font-size: 12px, $font-style: italic, $color: $defaultText);
         }
     }
 
@@ -76,6 +89,26 @@
             }
             &:last-of-type { padding-bottom: 10px; }
             &:hover { background: #d7dff3; }
+        }
+    }
+
+    .cancel-wrapper {
+        position: relative;
+        width: 18px;
+        height: 18px;
+        span {
+            width: 20px;
+            height: 2px;
+            display: inline-block;
+            position: absolute;
+            top: 50%;
+            background-color: #868686;
+            &:first-of-type {
+                transform: translateY(-50%) rotate(45deg);
+            }
+            &:last-of-type {
+                transform: translateY(-50%) rotate(-45deg);
+            }
         }
     }
 
