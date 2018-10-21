@@ -19,24 +19,41 @@
     }
 
     .add-party-wrapper {
-        display: inline-grid;
-        grid-template-columns: 1fr 6fr 1fr;
-        align-items: flex-start;
+        width: 500px;
+        // border-radius: 5px;
+        // padding: 10px 15px;
+        // display: flex;
+        // align-items: flex-start;
         animation: leftToRight .2s forwards linear;
         .add-party-text {
             cursor: pointer;
             @include font-properties($color: #4964DA);
             &:hover { opacity: .8; }
         }
-        .add-party-avatar { align-self: center; }
+    }
+
+    .show-party-wrapper {
+        width: 400px;
+        border-radius: 5px;
+        padding: 10px 15px;
+        display: flex;
+        align-items: flex-start;
+        animation: leftToRight .2s forwards linear;
+        background-color: #fafafa;
+        .party-info { flex-grow: 1; }
         .party-title {
             @include font-properties($color: $black);
         }
         .party-data {
+            margin: 10px 0 6px;
             @include font-properties($font-size: 12px, $color: $defaultText);
         }
         .current-balance {
             @include font-properties($font-size: 12px, $font-style: italic, $color: $defaultText);
+        }
+        .add-party-avatar {
+            margin-right: 10px;
+            align-self: center;
         }
     }
 
@@ -95,6 +112,7 @@
         }
     }
 
+
     .cancel-wrapper {
         width: 18px;
         height: 18px;
@@ -121,7 +139,7 @@
 
 @keyframes leftToRight {
     from {
-        transform: translateX(200%);
+        transform: translateX(100%);
         opacity: 0;
     }
     to {

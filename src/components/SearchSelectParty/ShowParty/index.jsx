@@ -4,7 +4,7 @@ import DEFAULT_AVATAR from '../../assets/images/default_avatar.svg';
 const ShowParty = ({ onCancelParty, currentBalance: { id, balance }, searchedPartiesList }) => {
     let partyData = searchedPartiesList.find(x => x.id === id);
     return (
-        <div className="add-party-wrapper" >
+        <div className="show-party-wrapper" >
             <img src={DEFAULT_AVATAR} className="avatar-image add-party-avatar" alt="default highlighted avatar" />
             <div className="party-info">
                 <h2 className="party-title">
