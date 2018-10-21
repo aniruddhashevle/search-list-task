@@ -16,7 +16,7 @@ export default function partiesList(state = INITIAL_STATE, action) {
         case GET_CURRENT_BALANACE:
             return { ...state, currentBalance: action.data };
         case CLEAR_CURRENT_BALANACE:
-            return { ...state, currentBalance: action.data };
+            return state = INITIAL_STATE;
         default:
             return state;
     }

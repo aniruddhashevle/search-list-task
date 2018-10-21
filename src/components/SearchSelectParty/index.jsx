@@ -1,45 +1,61 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { clearAddedParty, getCurrentBalance } from '../../redux/actions/search-parties-action';
+import { clearAddedPartyWithList, getCurrentBalance } from '../../redux/actions/search-parties-action';
 import AddParty from './AddParty';
 import SearchParties from './SearchParties';
 import ShowParty from './ShowParty';
 import './search-select.scss';
 
 class SearchSelectParty extends Component {
-    // constructor(props) {
-    //     super(props);
-    // }
-
-    onClickAddParty = () => {
-        console.log('test');
+    constructor(props) {
+        super(props);
+        this.state = {
+            shouldShowSearch: false,
+            shouldShowParty: false,
+        };
     }
 
-    onSelectParty = () => {
-
+    onClickAddParty = () => {
+        this.setState({ shouldShowSearch: true });
     }
 
     onCancelParty = () => {
-        this.props.clearAddedParty();
+        this.props.clearAddedPartyWithList();
+        this.setState({
+            shouldShowSearch: false,
+            shouldShowParty: false
+        });
     }
 
 
     onSelectingResult = (id) => {
-        console.log('id', id);
         this.props.getCurrentBalance(id);
+        this.setState({
+            shouldShowSearch: false,
+            shouldShowParty: true
+        });
     }
 
     render() {
         const {
-            searchedPartiesList,
-            currentBalance = null
-        } = this.props;
+            shouldShowSearch,
+            shouldShowParty
+        } = this.state,
+            {
+                searchedPartiesList,
+                currentBalance = null
+            } = this.props;
         return (
             <div className="search-select-wrapper">
-                <AddParty onClickAddParty={this.onClickAddParty} />
-                <SearchParties onSelectingResult={this.onSelectingResult} />
                 {
-                    currentBalance && searchedPartiesList.length > 0 &&
+                    !shouldShowSearch ?
+                        !shouldShowParty && <AddParty onClickAddParty={this.onClickAddParty} />
+                        :
+                        !shouldShowParty &&
+                        <SearchParties onSelectingResult={this.onSelectingResult} />
+                }
+                {
+                    currentBalance && searchedPartiesList.length > 0 && shouldShowParty &&
                     <ShowParty
                         currentBalance={currentBalance}
                         searchedPartiesList={searchedPartiesList}
@@ -66,6 +82,6 @@ function mapStateToProps(reduxState) {
 }
 
 export default connect(mapStateToProps, {
-    clearAddedParty,
+    clearAddedPartyWithList,
     getCurrentBalance
 })(SearchSelectParty);

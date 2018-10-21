@@ -21,7 +21,6 @@ function setCurrentBalance(data) {
 function clearCurrentBalance() {
     return {
         type: CLEAR_CURRENT_BALANACE,
-        data: null
     }
 }
 
@@ -152,7 +151,7 @@ export function getCurrentBalance(id) {
     }
 }
 
-export function clearAddedParty() {
+export function clearAddedPartyWithList() {
     return dispatch => {
         dispatch(clearCurrentBalance());
     }
