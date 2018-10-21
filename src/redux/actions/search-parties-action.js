@@ -78,7 +78,13 @@ export function getPartiesList(searchValue) {
                     name: 'AGRA KUMAR & BROS',
                     id: '5b879d09d1f79c0014a7276c'
                 }
-            ]
+            ];
+            data = data.filter(x => {
+                return (
+                    x.name.toLocaleLowerCase().search(searchValue.toLocaleLowerCase()) !== -1 ||
+                    x.address.toLocaleLowerCase().search(searchValue.toLocaleLowerCase()) !== -1
+                )
+            })
         }
         dispatch(setPartiesList(data));
     }
